@@ -3,7 +3,7 @@ module Golf where
 -- Index the values in the given list, fill the resulting list with itself and
 -- index these lists. This creates the structure 
 -- [(ListIndex, [(ValueIndex, value)])]. Filter out indexed values whose indexes
--- aren't multiple of their list index and then deindex the lists and values.
+-- aren't multiples of their list index and then deindex the lists and values.
 skips :: [a] -> [[a]]
 skips = map (deindex) . deindex . map (skip) . index . tesselate . index 
 
