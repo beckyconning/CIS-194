@@ -1,5 +1,12 @@
 module Golf where
 
+-- Index the values in the given list, fill the resulting list with itself and
+-- index these lists. This creates the structure 
+-- [(ListIndex, [(ValueIndex, value)])]. Filter out indexed values whose indexes
+-- aren't multiple of their list index and then deindex the lists and values.
+skips :: [a] -> [[a]]
+skips = map (deindex) . deindex . map (skip) . index . tesselate . index 
+
 -- Take an indexed list of indexed values and filter out indexed values whose
 -- indexes aren't multiples of the list index.
 skip :: (Int, [(Int, a)]) -> (Int, [(Int, a)])
@@ -20,10 +27,3 @@ index xs = zip [1 .. length xs] xs
 -- Fill the shape of the list with itself.
 tesselate :: [a] -> [[a]]
 tesselate x = map (\_ -> x) x
-
--- Index the values in the given list, fill the resulting list with itself and
--- index these lists. This creates the structure 
--- [(ListIndex, [(ValueIndex, value)])]. Filter out indexed values whose indexes
--- aren't multiple of their list index and then deindex the lists and values.
-skips :: [a] -> [[a]]
-skips = map (deindex) . deindex . map (skip) . index . tesselate . index 
