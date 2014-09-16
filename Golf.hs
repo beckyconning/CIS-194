@@ -1,7 +1,5 @@
 module Golf where
 
-import Data.List
-
 skip :: (Int, [(Int, a)]) -> (Int, [(Int, a)])
 skip (x, y) = (x, filter (\(z, _) -> z `isMultiple` x) y)
 
