@@ -18,7 +18,7 @@ isMultiple x y = x `mod` y == 0
 
 -- Remove the indexes from a list of indexed values.
 deindex :: [(Int, a)] -> [a]
-deindex x = map (\(_, a) -> a) x
+deindex = map (\(_, a) -> a)
 
 -- Pair each element of an list with an index starting at one.
 index :: [a] -> [(Int, a)]
